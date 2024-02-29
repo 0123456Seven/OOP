@@ -1,8 +1,11 @@
-package oop;
+package oop.car;
+
+import oop.Engine;
+import oop.Transport;
 
 // все, что умеет транспорт, умеет и Car (доступный функционал)
 // дочерний класс может (но не обязан) добавлять что-то от себя
-public class Car extends Transport{
+public class Car extends Transport implements CarPanel{
 
     public Car(String name, String model, String color) {
         super(name, model, color); // перекидываем все значения в родит. конструктор
@@ -13,14 +16,24 @@ public class Car extends Transport{
         this.number = number;
     }
 
-    public Car(int number) {
+    public Car(int number, Engine engine) {
         this.number = number;
+        this.engine = engine;
     }
 
     public Car() {
     }
 
+    @Override
+    public String toString() {
+        return "Car{" +
+                "number=" + number +
+                ", engine=" + engine +
+                '}';
+    }
+
     private int number; // для всех авто нужно будет иметь номер
+    private Engine engine;
 
     public int getNumber() {
         return number;
@@ -47,5 +60,13 @@ public class Car extends Transport{
     @Override
     public void stop() {
         System.out.println("stop car");
+    }
+
+    public Engine getEngine() {
+        return engine;
+    }
+
+    public void setEngine(Engine engine) {
+        this.engine = engine;
     }
 }

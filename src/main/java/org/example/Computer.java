@@ -1,18 +1,27 @@
 package org.example;
 
-public class Computer {
-    String name;
+public class Computer implements OnOff{
+    private String name;
+    private Monitor monitor;
+
+
     public Computer(){
 
     }
     public Computer(String name){
         this.name = name;
     }
+
+    public Computer(String name, Monitor monitor) {
+        this.name = name;
+        this.monitor = monitor;
+    }
+
     public void on(){
-        System.out.println(name + " on");
+        System.out.println("Компьютер включился "+name+", используется монитор "+monitor.getName());
     }
     public void off(){
-        System.out.println(name + " off");
+        System.out.println("Компьютер выключился "+name+", используется монитор "+monitor.getName());
     }
     public String getName(){
         return name;
@@ -21,4 +30,11 @@ public class Computer {
         this.name = name;
     }
 
+    @Override
+    public String toString() {
+        return "Computer{" +
+                "name='" + name + '\'' +
+                ", monitor=" + monitor +
+                '}';
+    }
 }
